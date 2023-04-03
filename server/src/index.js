@@ -1,14 +1,23 @@
-import express from 'express';
-import axios from 'axios';
-
+const express = require('express');
 const app = express();
+const router = express.Router();
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
-app.post('/compare', (req, res) => {
-    const { q1, q2 } = req.query;
-    axios.request(options).then(function (response) {
-        console.log(response.data);
-    }).catch(function (error) {
-        console.error(error);
-    });
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get('/', function (req, res) {
+    res.status(200).send('OK');
 });
+
+var authRouter = require('./routes/auth');
+app.use('/auth', authRouter);
+
+
+app.listen(1002, function () {
+    console.log('Renondera API listening on port 1002.');
+});
+
+module.exports = router;
