@@ -1,4 +1,0 @@
-{
-    "SECRET": "secret key",
-    "SALT_ROUNDS": 10
-}
