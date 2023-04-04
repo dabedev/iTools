@@ -1,35 +1,53 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '@styles/Login.scss';
 
-import yardSale from '@logos/logo_yard_sale.svg';
+import AppContext from '@context/AppContext';
+
+import apiKeys from '@config/apiKeys.json';
+
+import '@styles/Form.scss';
 
 const Login = () => {
     const form = useRef(null);
-
+    const { useAuthentication } = useContext(AppContext);
+    const { setValue, authentication } = useAuthentication();
+    const navigate = useNavigate();
     const submitHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(form.current);
+        const apiUrl = 'http://localhost:4000/auth/signin';
         const data = {
-            username: formData.get('email'),
+            email: formData.get('email'),
             password: formData.get('password')
         };
-        console.log(data);
+        const response = axios.post(apiUrl, data);
+        response.then(function (response) {
+            alert(response.data.message);
+            setValue('token', response.data.token);
+            setValue('userData', response.data.userData);
+            console.log(authentication)
+            //return navigate('/account', { replace: true })
+        }).catch(function (error) {
+            console.log(error)
+            alert(error.response.data.message);
+        });
     }
 
     return (
-        <div className="login">
+        <div className="signin">
             <div className="form-container">
-                <img src={yardSale} alt="logo" className="nav-logo" />
                 <form className="form" ref={form}>
-                    <label htmlFor="email" className="label">Correo electrónico</label>
-                    <input type="text" name="email" placeholder="correo@example.com" className="input input-email" />
-                    <label htmlFor="password" className="label">Contraseña</label>
+                    <label htmlFor="email" className="label">Email</label>
+                    <input type="text" name="email" placeholder="mail@example.com" className="input input-email" />
+                    <label htmlFor="password" className="label">Password</label>
                     <input type="password" name="password" placeholder="*********" className="input input-password" />
-                    <button className="primary-button login-button" onClick={submitHandler}>Acceder</button>
-                    <a href="/">Olvidé mi contraseña</a>
+                    <button className="primary-button" onClick={submitHandler}>Sign in</button>
+                    <br />
+                    <Link to="/password-recovery" className='forgot-password'>Forgot your password?</Link>
+                    <br />
+                    <Link to="/sign-up" className='forgot-password'>You don't have an accout? Sign up!</Link>
                 </form>
-                <button className="secondary-button signup-button">Registrarse</button>
             </div>
         </div>
     )

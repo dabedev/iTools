@@ -1,12 +1,8 @@
 import React from 'react';
-import ProductList from '@containers/ProductList';
 
-const Home = () => {
+function ResponsiveAppBar() {
 	return (
-		<>
-			<ProductList />
-		</>
+		<div>Hola mundo</div>
 	);
 }
-
-export default Home;
+export default ResponsiveAppBar;

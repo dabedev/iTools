@@ -4,6 +4,8 @@ const router = express.Router();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+const PORT = 4000;
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -15,9 +17,12 @@ app.get('/', function (req, res) {
 var authRouter = require('./routes/auth');
 app.use('/auth', authRouter);
 
+var usersRouter = require('./routes/users');
+app.use('/users', usersRouter);
 
-app.listen(1002, function () {
-    console.log('Renondera API listening on port 1002.');
+
+app.listen(PORT, function () {
+    console.log(`Renondera API listening on port ${PORT}.`);
 });
 
 module.exports = router;

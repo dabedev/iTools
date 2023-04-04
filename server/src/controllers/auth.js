@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { v4: uuIdV4 } = require('uuid');
 const Database = new db();
-const { SALT_ROUNDS: salt_rounds, SECRET: secret } = require('../config/session.json');
+const { SALT_ROUNDS, SECRET } = require('../config/session.json');
 const signInCD = new Map();
 
 /***
@@ -13,7 +13,7 @@ const signInCD = new Map();
 const signIn = (req, res) => {
     var [email, password] = [req.body.email, req.body.password];
     if (!email || !password) {
-        res.status(400).json({ message: 'Campos incompletos.' });
+        res.status(400).json({ message: 'Incomplete fields.' });
         return;
     }
 
@@ -21,40 +21,41 @@ const signIn = (req, res) => {
 
     if (attempts.count >= 5 && Date.now() - attempts.lastAttempt < 300000) {
         const timeLeft = Math.ceil((300000 - (Date.now() - attempts.lastAttempt)) / 1000 / 60);
-        res.status(429).json({ message: `Demasiados intentos fallidos, intente de nuevo en ${timeLeft} minutos.` });
+        res.status(429).json({ message: `Too many failed attempts, please try again in ${timeLeft} minutes.` });
         return;
     }
 
-    Database.query('SELECT id, email, password FROM account WHERE email = ?', [email]).then(resultLogin => {
+    Database.query('SELECT id, email, password FROM accounts WHERE email = ?', [email]).then(resultLogin => {
         if (resultLogin.length > 0) {
             bcrypt.compare(password, resultLogin[0].password, (err, result) => {
                 if (err) {
                     console.log(err);
-                    res.status(500).json({ message: 'Error al iniciar sesión.' });
+                    res.status(500).json({ message: 'Error logging in.' });
                 } else {
                     if (result) {
                         signInCD.set(email, { count: 0, lastAttempt: Date.now() });
-                        var token = jwt.sign({ email: email, id: resultLogin[0].id }, secret, { expiresIn: '24h' });
+                        var token = jwt.sign({ email: email, id: resultLogin[0].id }, SECRET, { expiresIn: '2h' });
                         var userData = {
                             id: resultLogin[0].id,
                             email: resultLogin[0].email
                         };
-                        res.status(200).json({ message: 'Te has logueado correctamente.', token: token, userData: userData });
+                        res.status(200).json({ message: 'Logged in successfully.', token: token, userData: userData });
                     } else {
                         signInCD.set(email, { count: attempts.count + 1, lastAttempt: Date.now() });
-                        res.status(401).json({ message: 'Contraseña incorrecta.' });
+                        res.status(401).json({ message: 'Incorrect password.' });
                     }
                 }
             });
         } else {
             signInCD.set(email, { count: attempts.count + 1, lastAttempt: Date.now() });
-            res.status(401).json({ message: 'Usuario no encontrado.' });
+            res.status(401).json({ message: 'User not found.' });
         }
     }).catch(err => {
         console.log(err);
-        res.status(500).json({ message: 'Error al iniciar sesión.' });
+        res.status(500).json({ message: 'Error logging in.' });
     });
 };
+
 
 /***
 * @param {Object} req solicitud del cliente al servidor
@@ -63,37 +64,37 @@ const signIn = (req, res) => {
 const signUp = (req, res) => {
     var [email, username, password] = [req.body.email, req.body.username, req.body.password];
     if (!email || !username || !password) {
-        res.status(400).json({ message: 'Campos incompletos.' });
+        res.status(400).json({ message: 'Incomplete fields.' });
         return;
     }
-    Database.query('SELECT * FROM account WHERE email = ?', [email]).then(result => {
+    Database.query('SELECT * FROM accounts WHERE email = ?', [email]).then(result => {
         if (result.length > 0) {
-            res.status(500).json({ message: 'El correo electrónico ya está en uso.' });
+            res.status(500).json({ message: 'Email already in use.' });
         } else {
-            bcrypt.genSalt(salt_rounds, function (err, salt) {
+            bcrypt.genSalt(SALT_ROUNDS, function (err, salt) {
                 if (err) {
                     console.log(err);
-                    res.status(500).json({ message: 'Error al registrar el usuario.' });
+                    res.status(500).json({ message: 'Error registering user.' });
                 }
                 bcrypt.hash(password, salt, function (err, hash) {
                     if (err) {
                         console.log(err);
-                        res.status(500).json({ message: 'Error al registrar el usuario.' });
+                        res.status(500).json({ message: 'Error registering user.' });
                     }
                     password = hash;
                     const userId = uuIdV4();
-                    Database.query('INSERT INTO account (id, email, username, password) VALUES (?, ?, ?, ?)', [userId, email, username, password]).then(() => {
-                        res.status(200).json({ message: 'Usuario registrado correctamente.' });
+                    Database.query('INSERT INTO accounts (id, email, username, password) VALUES (?, ?, ?, ?)', [userId, email, username, password]).then(() => {
+                        res.status(200).json({ message: 'User registered successfully.' });
                     }).catch(err => {
                         console.log(err);
-                        res.status(500).json({ message: 'Error al registrar el usuario.' });
+                        res.status(500).json({ message: 'Error registering user.' });
                     });
                 });
             });
         }
     }).catch(err => {
         console.log(err);
-        res.status(500).json({ message: 'Error al registrar el usuario.' });
+        res.status(500).json({ message: 'Error registering user.' });
     });
 };
 
@@ -107,37 +108,38 @@ const resetPassword = (req, res) => {
     const userEmail = decoded.email;
     const password = req.body.password;
     if (!password) {
-        res.status(400).json({ message: 'Contraseña no especificada.' });
+        res.status(400).json({ message: 'Password not specified.' });
         return;
     }
-    Database.query('SELECT * FROM account WHERE email = ?', [userEmail]).then(result => {
+    Database.query('SELECT * FROM accounts WHERE email = ?', [userEmail]).then(result => {
         if (result.length > 0) {
-            bcrypt.genSalt(salt_rounds, function (err, salt) {
+            bcrypt.genSalt(SALT_ROUNDS, function (err, salt) {
                 if (err) {
                     console.log(err);
-                    res.status(500).json({ message: 'Error al cambiar la contraseña del usuario.' });
+                    res.status(500).json({ message: 'Error changing user password.' });
                 }
                 bcrypt.hash(password, salt, function (err, hash) {
                     if (err) {
                         console.log(err);
-                        res.status(500).json({ message: 'Error al cambiar la contraseña del usuario.' });
+                        res.status(500).json({ message: 'Error changing user password.' });
                     }
-                    Database.query('UPDATE account SET password = ? WHERE email = ?', [hash, userEmail]).then(() => {
-                        res.status(200).json({ message: 'Contraseña cambiada correctamente.' });
+                    Database.query('UPDATE accounts SET password = ? WHERE email = ?', [hash, userEmail]).then(() => {
+                        res.status(200).json({ message: 'Password changed successfully.' });
                     }).catch(err => {
                         console.log(err);
-                        res.status(500).json({ message: 'Error al cambiar la contraseña del usuario.' });
+                        res.status(500).json({ message: 'Error changing user password.' });
                     });
                 });
             });
         } else {
-            res.status(500).json({ message: 'Error al cambiar la contraseña del usuario.' });
+            res.status(500).json({ message: 'Error changing user password.' });
         }
     }).catch(err => {
         console.log(err);
-        res.status(500).json({ message: 'Error al cambiar la contraseña del usuario.' });
+        res.status(500).json({ message: 'Error changing user password.' });
     });
 };
+
 
 module.exports = {
     signIn,

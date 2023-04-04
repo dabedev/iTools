@@ -1,0 +1,73 @@
+@import 'vars';
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-title {
+  color: var(--gray-ish);
+}
+
+.label {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 400px;
+  font-size: 16px;
+}
+
+.primary-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.primary-button:hover {
+  background-color: #0069d9;
+}
+
+.secondary-button {
+  background-color: #e6e6e6;
+  color: #444444;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.secondary-button:hover {
+  background-color: #d4d4d4;
+}
+
+.forgot-password {
+  color: #666;
+  text-decoration: underline;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.label-form {
+  display: block;
+  margin-bottom: 0.5rem;
+}

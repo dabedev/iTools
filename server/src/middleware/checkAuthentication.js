@@ -2,18 +2,22 @@ const jwt = require('jsonwebtoken');
 const { SECRET } = require('../config/session.json');
 
 const checkAuthentication = (req, res, next) => {
-    var token = req.headers['Authorization'].split(/ +/g)[1];
-    if (token) {
-        jwt.verify(token, SECRET, (err, decoded) => {
-            if (err) {
-                res.status(401).json({ message: 'Token inválido.' });
-            } else {
-                req.decoded = decoded;
-                next();
-            }
-        });
-    } else {
-        res.status(401).json({ message: 'Token no encontrado.' });
+    try {
+        var token = req.headers['authorization'].split(/ +/g)[1];
+        if (token) {
+            jwt.verify(token, SECRET, (err, decoded) => {
+                if (err) {
+                    res.status(401).json({ message: 'Invalid token.' });
+                } else {
+                    req.decoded = decoded;
+                    next();
+                }
+            });
+        } else {
+            res.status(401).json({ message: 'Token not found.' });
+        }
+    } catch (e) {
+        res.status(401).json({ message: 'Invalid format.' })
     }
 };
 

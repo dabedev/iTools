@@ -13,14 +13,16 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
+            '@routes': path.resolve(__dirname, 'src/routes/'),
             '@components': path.resolve(__dirname, 'src/components/'),
             '@containers': path.resolve(__dirname, 'src/containers/'),
             '@pages': path.resolve(__dirname, 'src/pages/'),
             '@hooks': path.resolve(__dirname, 'src/hooks/'),
             '@context': path.resolve(__dirname, 'src/context/'),
             '@styles': path.resolve(__dirname, 'src/styles/'),
+            '@config': path.resolve(__dirname, 'src/config/'),
             '@icons': path.resolve(__dirname, 'src/assets/icons/'),
-            '@logos': path.resolve(__dirname, 'src/assets/logos/'),
+            '@images': path.resolve(__dirname, 'src/assets/images/'),
         }
     },
     module: {
