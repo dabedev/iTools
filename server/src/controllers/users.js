@@ -9,7 +9,6 @@ const { SALT_ROUNDS, SECRET } = require('../config/session.json');
  */
 const getMyUser = (req, res) => {
     const decoded = req.decoded;
-    console.log(decoded)
     Database.query('SELECT id, username, email, created_at, updated_at, deleted_at, is_active, is_verified, is_banned FROM accounts WHERE id=?', [decoded.id]).then(result => {
         res.json(result[0])
     }).catch(err => {

@@ -34,7 +34,7 @@ const signIn = (req, res) => {
                 } else {
                     if (result) {
                         signInCD.set(email, { count: 0, lastAttempt: Date.now() });
-                        var token = jwt.sign({ email: email, id: resultLogin[0].id }, SECRET, { expiresIn: '2h' });
+                        var token = jwt.sign({ email: email, id: resultLogin[0].id }, SECRET, { expiresIn: '8h' });
                         var userData = {
                             id: resultLogin[0].id,
                             email: resultLogin[0].email
@@ -156,7 +156,7 @@ const refreshToken = (req, res) => {
             return res.status(401).json({ message: 'Access token has expired.' });
         }
 
-        const newToken = jwt.sign({ email: decodedToken.email, id: decodedToken.id }, SECRET, { expiresIn: '2h' });
+        const newToken = jwt.sign({ email: decodedToken.email, id: decodedToken.id }, SECRET, { expiresIn: '8h' });
         const userData = {
             id: decodedToken.id,
             email: decodedToken.email,
