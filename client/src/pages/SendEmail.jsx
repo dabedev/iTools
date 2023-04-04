@@ -14,7 +14,7 @@ const SendEmail = () => {
                 <button className="primary-button login-button">Acceder</button>
                 <p className="resend">
                     <span>¿No recibiste el correo?</span>
-                    <a href="/">Reenvía</a>
+                    <Link to="/">Reenvía</Link>
                 </p>
             </div>
         </div>

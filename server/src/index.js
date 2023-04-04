@@ -22,7 +22,7 @@ app.use('/users', usersRouter);
 
 
 app.listen(PORT, function () {
-    console.log(`Renondera API listening on port ${PORT}.`);
+    console.log(`iTools API listening on port ${PORT}.`);
 });
 
 module.exports = router;

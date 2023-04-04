@@ -27,6 +27,21 @@
   margin-left: 20px;
 }
 
+.nav-item button {
+  font-size: 16px;
+  margin-left: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--black);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.nav-item button:hover {
+  color: var(--gray);
+}
+
 .nav-item:first-child {
   margin-left: 0;
 }

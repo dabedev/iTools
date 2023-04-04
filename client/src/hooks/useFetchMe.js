@@ -7,12 +7,12 @@ const useFetchMe = (api, options = {}) => {
     useEffect(() => {
         const controller = new AbortController();
         const signal = controller.signal;
-        let config = {
+        const config = {
             method: options.method,
             url: api,
             headers: options.headers
         };
-        axios.request(config, { signal })
+        axios(config, { signal })
             .then((response) => {
                 setState(response.data);
             })

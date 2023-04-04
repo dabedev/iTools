@@ -3,7 +3,7 @@ const { SECRET } = require('../config/session.json');
 
 const checkAuthentication = (req, res, next) => {
     try {
-        var token = req.headers['authorization'].split(/ +/g)[1];
+        var token = req.headers['authorization']?.split(/ +/g)[1];
         if (token) {
             jwt.verify(token, SECRET, (err, decoded) => {
                 if (err) {

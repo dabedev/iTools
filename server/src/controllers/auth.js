@@ -140,9 +140,35 @@ const resetPassword = (req, res) => {
     });
 };
 
+const refreshToken = (req, res) => {
+    const oldToken = req.headers.authorization?.split(/ +/g)[1];
+    if (!oldToken) {
+        return res.status(401).json({ message: 'Missing access token.' });
+    }
+
+    jwt.verify(oldToken, SECRET, (err, decodedToken) => {
+        if (err) {
+            return res.status(401).json({ message: 'Invalid access token.' });
+        }
+
+        const currentTime = Date.now() / 1000;
+        if (decodedToken.exp < currentTime) {
+            return res.status(401).json({ message: 'Access token has expired.' });
+        }
+
+        const newToken = jwt.sign({ email: decodedToken.email, id: decodedToken.id }, SECRET, { expiresIn: '2h' });
+        const userData = {
+            id: decodedToken.id,
+            email: decodedToken.email,
+        };
+        res.status(200).json({ message: 'Token refreshed successfully.', token: newToken, userData: userData });
+    });
+};
+
 
 module.exports = {
     signIn,
     signUp,
-    resetPassword
+    resetPassword,
+    refreshToken
 };

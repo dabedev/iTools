@@ -1,5 +1,5 @@
 import React, { useRef, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import AppContext from '@context/AppContext';
@@ -12,7 +12,6 @@ const Login = () => {
     const form = useRef(null);
     const { useAuthentication } = useContext(AppContext);
     const { setValue, authentication } = useAuthentication();
-    const navigate = useNavigate();
     const submitHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(form.current);
@@ -27,7 +26,7 @@ const Login = () => {
             setValue('token', response.data.token);
             setValue('userData', response.data.userData);
             console.log(authentication)
-            //return navigate('/account', { replace: true })
+            return window.location.href = '/account';
         }).catch(function (error) {
             console.log(error)
             alert(error.response.data.message);
