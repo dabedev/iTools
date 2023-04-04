@@ -1,50 +1,101 @@
-# React Practical Course
+# iTools
 
-This project is based on the React Practical Course by Platzi, but modified to my preferences with best practices and additional features.
+This repository contains a text similarity comparison tool that allows you to compare the similarity between two or more texts. The tool uses a variety of algorithms and techniques to analyze the texts and provide a similarity score. With this tool, you can compare any type of text, from short phrases to long documents, and get a detailed analysis of their similarities and differences. Whether you're a writer, a researcher, or just someone who wants to compare texts, this tool can help you make informed decisions and save time.
 
-## Installation
+## Table of Contents
 
-To install the project dependencies, use:
+- [iTools](#itools)
+  - [Table of Contents](#table-of-contents)
+  - [Client](#client)
+    - [Client's installation](#clients-installation)
+    - [Client's usage](#clients-usage)
+  - [Server](#server)
+    - [Server's installation](#servers-installation)
+    - [Server's usage](#servers-usage)
+  - [Contributing](#contributing)
+
+## Client
+
+### Client's installation
+
+To install the client, follow these steps:
+
+- Navigate to the `client` directory
+
+```sh
+cd iTools/client
+```
+
+- Install the required dependencies using `npm`
 
 ```sh
 npm ci
 ```
 
-**Note:** Running this command will install the serve NPM module locally. If you prefer not to include this module in your project, you can remove it from the package.json file before running the installation command.
+### Client's usage
 
-## Development
+To use the client, follow these steps:
 
-To start the project in development mode, use:
+- For development, run the following command in the `client` directory:
 
 ```sh
 npm start
 ```
 
-This will launch the development server and you can access the application in your browser at `http://localhost:3005`.
+This will start the development server and open the client application in your default browser.
 
-## Deployment
-
-To start the project in production mode, use:
+- For production, run the following command in the `client` directory:
 
 ```sh
-npm run build && serve -s dist
+npm run build
 ```
 
-This will launch the production server and you can access the application in your browser at `http://localhost:3000`.
+This will create a production build of the client application in the `build` directory of the `client` folder. You can then serve this directory using a web server of your choice.
 
-**Note:** To run the application in production mode, you need to install the 'serve' NPM module globally. Alternatively, you can install it locally and start the production server using the following command:
+## Server
+
+### Server's installation
+
+To install the server, please follow these steps:
+
+- Navigate to the server directory
+
+  ```sh
+  cd iTools/server
+  ```
+
+- Install the required dependencies using `npm`
+
+  ```sh
+  npm ci
+  ```
+
+### Server's usage
+
+To use the server, follow these steps:
+
+- For development, run the following command in the `server` directory:
 
 ```sh
-npm run build && npx serve -s dist
+npm test
 ```
 
-## Features
+This will start the server in development mode, allowing you to make changes to the code and see the results in real time.
 
-- Several bugs related to the removal of multiple items of the same type from the shopping cart have been fixed.
-- Structural modifications have been implemented to optimize memory usage and prevent unnecessary waste.
-- Fixed styling issue on MyOrder component where cart would overflow and push other elements down.
+- For production, run the following command in the `server` directory:
 
-## Credits
+  ```sh
+  npm start
+  ```
 
-- Platzi: <https://platzi.com/>
-- React Practical Course: <https://platzi.com/cursos/react-practico/>
+  This will start the server in production mode, allowing you to serve the application using a web server of your choice.
+
+## Contributing
+
+If you would like to contribute to this project, please follow these steps:
+
+1. Fork the repository
+2. Make your changes
+3. Submit a pull request
+
+Bug reports and feature requests can be submitted through the Issues tab.
