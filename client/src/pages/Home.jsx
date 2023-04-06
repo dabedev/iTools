@@ -25,7 +25,7 @@ function Home() {
 					With our open source API, you can easily integrate its functionalities into your own applications and customize them as necessary.
 				</div>
 				<div className='feature'>
-					<h1>Developer Friendly</h1>
+					<h1>Developer friendly</h1>
 					Our API is developer-friendly, with easy implementation tools and a playground for testing and generating code in multiple languages.
 					No customer support is provided, but our resources make integration quick and hassle-free.
 				</div>
