@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import AppContext from '@context/AppContext';
 
-import '@styles/sizes.scss';
+import '@styles/_sizes.scss';
 import '@styles/Header.scss';
 
 import logo from '@logos/iTools.icon.png';
@@ -25,29 +25,32 @@ function Header() {
 			</div>
 			<ul className="nav-list nav-static">
 				<li className="nav-item">
-					<Link to="/dashboard">Dashboard</Link>
+					<Link to="/docs">Documentation</Link>
 				</li>
 				<li className="nav-item">
 					<Link to="/playground">Playground</Link>
 				</li>
 			</ul>
 			<ul className="nav-list">
-				<li className="nav-item">
-					<Link to="/docs">Documentation</Link>
-				</li>
 				{isAuthenticated ? (
 					<>
+						<li className="nav-item">
+							<Link to="/dashboard">Dashboard</Link>
+						</li>
 						<li className="nav-item">
 							<Link to="/my-account">My account</Link>
 						</li>
 						<li className="nav-item">
-							<button onClick={handleLogout}>Logout</button>
+							<button onClick={handleLogout} className='sign-button'>Logout</button>
 						</li>
 					</>
 				) : (
 					<>
 						<li className="nav-item">
-							<Link to="/sign-in">Sign in</Link>
+							<Link to="/sign-up" className='sign-button'>Sign up</Link>
+						</li>
+						<li className="nav-item">
+							<Link to="/sign-in" className='sign-button light-button'>Sign in</Link>
 						</li>
 					</>
 				)}

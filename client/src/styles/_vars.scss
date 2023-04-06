@@ -1,8 +1,11 @@
 :root {
-	--color-white: #FFFFFF;
-	--color-black: #000000;
-	--color-gray: #999999e7;
+	--color-black: #000;
+	--color-gray: #888;
+	--color-white: #fff;
+	--color-indigo: #6610f2;
+	--color-indigo-dark: #4c05f2;
 	--color-gray-ish: #333232e7;
+	--color-indigo-light: #818cf8;
 	--color-white-gray: #ccc;
 	--color-very-light-pink: #C7C7C7;
 	--color-hospital-green: #ACD9B2;
@@ -11,4 +14,5 @@
 	--md: 16px;
 	--lg: 18px;
 	--xl: 24px;
+	--transition: 0.2s ease-in-out;
 }

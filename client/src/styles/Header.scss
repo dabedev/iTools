@@ -4,101 +4,150 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 20px;
+  padding: 0 20px;
   background-color: var(--color-white);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  font-family: sans-serif;
-}
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-.brand {
-  font-weight: bold;
-  color: var(--color-black);
-  text-decoration: none;
-}
+  .brand-container {
+    display: flex;
+    align-items: center;
+    margin-right: -50rem;
 
-.brand-container {
-  display: flex;
-  align-items: center;
-}
+    .brand {
+      font-weight: bold;
+      color: var(--color-black);
+      text-decoration: none;
+    }
+  }
 
-.nav-list {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-static {
-  margin-left: -50rem;
-}
-
-.nav-item {
-  margin-left: 20px;
-}
-
-.nav-item button {
-  font-size: 16px;
-  margin-left: 20px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  color: var(--color-black);
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
-
-.nav-item button:hover {
-  color: var(--color-gray);
-}
-
-.nav-item:first-child {
-  margin-left: 0;
-}
-
-.nav-item a {
-  color: var(--color-black);
-  text-decoration: none;
-  transition: color 0.2s ease-in-out;
-}
-
-.nav-item a:hover {
-  color: var(--color-gray);
-}
-
-@media screen and (max-width: 1280px) {
   .nav-static {
     margin-left: 0;
   }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 1rem;
+
+    .nav-item {
+      padding: 10px 0;
+
+      &:first-child {
+        margin-right: auto;
+      }
+
+      a {
+        color: var(--color-black);
+        text-decoration: none;
+        transition: color var(--transition);
+      }
+
+      a:hover {
+        color: var(--color-gray);
+      }
+    }
+
+    .sign-button {
+      @extend .nav-item;
+      padding: 10px 20px;
+      border: 2px solid var(--color-indigo);
+      border-radius: 20px;
+      background-color: var(--color-indigo);
+      color: var(--color-white);
+      text-decoration: none;
+      transition: color var(--transition), background-color var(--transition);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--color-indigo-dark);
+        border: 2px solid var(--color-indigo-dark);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .light-button {
+      background-color: var(--color-indigo-dark);
+    }
+
+    a.sign-button {
+      color: var(--color-white);
+
+      &:hover {
+        color: var(--color-white);
+      }
+    }
+  }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 968px) and (max-width: 1440px) {
   .navbar {
-    flex-direction: column;
-    align-items: center;
+    padding: 0 30px;
   }
 
-  .brand-container > .nav-list {
-    margin-left: 0;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
+  .nav-static {
+    margin-inline-start: 0;
+    display: none;
+    visibility: hidden;
   }
 
   .nav-list {
-    flex-direction: column;
-    align-items: center;
-    margin-top: 1rem;
-  }
-  
-  .nav-item {
-    margin: 10px 0;
-  }
-
-  .nav-item button {
-    margin-left: 0;
+    margin-inline-start: auto;
+    gap: 30px;
+    place-items: center;
   }
 
   .nav-item:first-child {
-    margin-top: 0;
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+  }
+
+  .sign-button {
+    font-size: var(--font-size-medium);
+    padding: 10px 25px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+
+  .brand {
+    margin-left: -10rem;
+  }
+
+  .nav-static {
+    margin-inline-start: 0;
+  }
+
+  .brand-container {
+    margin-inline-end: 0;
+    margin-bottom: 10px;
+    margin-right: 0;
+    margin-left: -35rem;
+  }
+
+  .nav-list {
+    margin-inline-start: auto;
+    gap: 20px;
+    place-items: center;
+    flex-direction: column;
+  }
+
+  .nav-item:first-child {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    margin-bottom: 10px;
+  }
+
+  .sign-button {
+    margin-inline-start: 0;
+    margin-inline-end: 0;
   }
 }

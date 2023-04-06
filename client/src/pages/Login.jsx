@@ -21,20 +21,32 @@ const Login = () => {
             password: formData.get('password')
         };
         const response = axios.post(apiUrl, data);
-        response.then(function (response) {
-            alert(response.data.message);
-            setValue('token', response.data.token);
-            setValue('userData', response.data.userData);
-            console.log(authentication)
-            return window.location.href = '/my-account';
-        }).catch(function (error) {
-            console.log(error)
-            alert(error.response.data.message);
-        });
-    }
+        response
+            .then(function (response) {
+                setValue('token', response.data.token);
+                setValue('userData', response.data.userData);
+                const notification = document.querySelector('.notification');
+                notification.innerText = response.data.message;
+                notification.classList.remove('notification--error');
+                notification.classList.add('notification--success');
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    window.location.href = '/my-account';
+                }, 2 * 1000);
+            })
+            .catch(function (error) {
+                const notification = document.querySelector('.notification');
+                notification.innerText = error.response.data.message;
+                notification.classList.remove('notification--success');
+                notification.classList.add('notification--error');
+                notification.style.display = 'block';
+            });
+    };
+
 
     return (
         <div className="signin">
+            <div className='notification'></div>
             <div className="form-container">
                 <form className="form" ref={form}>
                     <label htmlFor="email" className="label">Email</label>

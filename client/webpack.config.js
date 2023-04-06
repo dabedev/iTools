@@ -11,7 +11,7 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.scss'],
         alias: {
             '@routes': path.resolve(__dirname, 'src/routes/'),
             '@components': path.resolve(__dirname, 'src/components/'),
@@ -23,7 +23,8 @@ module.exports = {
             '@config': path.resolve(__dirname, 'src/config/'),
             '@icons': path.resolve(__dirname, 'src/assets/icons/'),
             '@logos': path.resolve(__dirname, 'src/assets/logos/'),
-            '@images': path.resolve(__dirname, 'src/assets/images/')
+            '@images': path.resolve(__dirname, 'src/assets/images/'),
+            '@svgs': path.resolve(__dirname, 'src/assets/svgs/')
         }
     },
     module: {

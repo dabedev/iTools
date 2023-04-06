@@ -1,8 +1,94 @@
 @import 'vars';
 
-.MyAccount-container > h1 {
-    position: relative;
-    display: block;
-    justify-content: center;
-    text-align: center;
+.MyAccount {
+    background-color: #f7f7f7;
+    padding: 50px 0;
+
+    .MyAccount-container {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 50px;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            color: #333;
+        }
+
+        h1 {
+            position: relative;
+            display: block;
+            justify-content: center;
+            text-align: center;
+        }
+
+        div {
+            margin-bottom: 20px;
+
+            .user-avatar img {
+                border-radius: 50%;
+            }
+
+            .user-avatar {
+                position: relative;
+                display: inline-block;
+
+                &:hover::after {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-image: url('@svgs/upload-solid.svg');
+                    background-size: cover;
+                    width: 32px;
+                    height: 32px;
+                    filter: invert(15%) sepia(96%) saturate(9362%) hue-rotate(259deg) brightness(93%) contrast(93%);
+                }
+
+            }
+
+
+            label {
+                display: block;
+                font-size: 18px;
+                font-weight: 600;
+                margin-bottom: 10px;
+                color: #333;
+            }
+
+            .value {
+                font-size: 16px;
+                color: #666;
+            }
+        }
+
+        a.login-button {
+            margin-top: 30px;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 25px;
+            background-color: var(--color-indigo);
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: var(--color-indigo-dark);
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
 }

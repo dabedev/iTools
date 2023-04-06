@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import '@styles/sizes.scss';
+import '@styles/_sizes.scss';
 import '@styles/Footer.scss';
 
 import logo from '@logos/iTools.icon.png';

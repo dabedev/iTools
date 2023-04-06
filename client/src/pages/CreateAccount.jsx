@@ -18,15 +18,24 @@ const CreateAccount = () => {
 		};
 		const response = axios.post(apiUrl, data);
 		response.then(function (response) {
-			alert(response.data.message);
-			return useNavigate('/sign-in', { replace: true })
-		}).catch(function (error) {
-			alert(error.response.data.message);
-		});
+			const notification = document.querySelector('.notification');
+			notification.innerText = response.data.message;
+			notification.classList.remove('notification--error');
+			notification.classList.add('notification--success');
+			notification.style.display = 'block';
+		})
+			.catch(function (error) {
+				const notification = document.querySelector('.notification');
+				notification.innerText = error.response.data.message;
+				notification.classList.remove('notification--success');
+				notification.classList.add('notification--error');
+				notification.style.display = 'block';
+			});
 	}
 
 	return (
 		<div className="signup">
+			<div className='notification'></div>
 			<div className="form-container">
 				<form className="form" ref={form}>
 					<label htmlFor="name" className="label">Name</label>
