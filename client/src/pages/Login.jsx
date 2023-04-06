@@ -26,7 +26,7 @@ const Login = () => {
             setValue('token', response.data.token);
             setValue('userData', response.data.userData);
             console.log(authentication)
-            return window.location.href = '/account';
+            return window.location.href = '/my-account';
         }).catch(function (error) {
             console.log(error)
             alert(error.response.data.message);

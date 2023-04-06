@@ -1,6 +1,6 @@
 # iTools
 
-This repository contains a text similarity comparison tool that allows you to compare the similarity between two or more texts. The tool uses a variety of algorithms and techniques to analyze the texts and provide a similarity score. With this tool, you can compare any type of text, from short phrases to long documents, and get a detailed analysis of their similarities and differences. Whether you're a writer, a researcher, or just someone who wants to compare texts, this tool can help you make informed decisions and save time.
+Our API provides a wide range of functionalities to help developers analyze and compare data. With our API, you can measure, analyze, and compare different types of data, from numerical data to text. Additionally, we also offer the ability to set up webhooks to receive real-time updates on statistical charts. With our API, you can easily integrate these functionalities into your applications to gain valuable insights about your data.
 
 ## Table of Contents
 

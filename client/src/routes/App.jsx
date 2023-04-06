@@ -21,12 +21,12 @@ const App = () => {
                 <Layout>
                     <Routes>
                         <Route path="/" element={<Home />} />
-                        <Route path="/sign-in" element={isAuthenticated ? <Navigate to='/account' /> : <Login />} />
+                        <Route path="/sign-in" element={isAuthenticated ? <Navigate to='/my-account' /> : <Login />} />
                         <Route path="/password-recovery" element={<PasswordRecovery />} />
                         <Route path="/send-email" element={<SendEmail />} />
                         <Route path="/new-password" element={<NewPassword />} />
-                        <Route path="/account" element={isAuthenticated ? <MyAccount /> : <Navigate to='/sign-in' />} />
-                        <Route path="/sign-up" element={isAuthenticated ? <Navigate to='/account' /> : <CreateAccount />} />
+                        <Route path="/my-account" element={isAuthenticated ? <MyAccount /> : <Navigate to='/sign-in' />} />
+                        <Route path="/sign-up" element={isAuthenticated ? <Navigate to='/my-account' /> : <CreateAccount />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Layout>
