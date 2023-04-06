@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import '@styles/sizes.scss';
@@ -17,13 +17,13 @@ function Footer() {
 
             <ul className="footer-list">
                 <li className="footer-item">
-                    <Link to="/contact">Contact me</Link>
+                    <a href="https://www.dabe.lat">Contact me</a>
                 </li>
                 <li className="footer-item">
-                    <Link to="/docs">Terms and conditions</Link>
+                    <Link to="/terms-conditions">Terms and conditions</Link>
                 </li>
                 <li className="footer-item">
-                    <Link to="/docs">Privacy policy</Link>
+                    <Link to="/privacy-policy">Privacy policy</Link>
                 </li>
             </ul>
         </footer>

@@ -1,0 +1,39 @@
+@import 'vars';
+
+$heading-font: 'Poppins', sans-serif;
+$text-font: 'Open Sans', sans-serif;
+
+.document {
+  font-family: $text-font;
+  font-size: var(--lg);
+  line-height: 1.5;
+  color: var(--color-text);
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  h1 {
+    font-family: $heading-font;
+    font-size: var(--xxl);
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: var(--color-secondary);
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      color: var(--color-tertiary);
+      text-decoration: underline;
+    }
+  }
+}
