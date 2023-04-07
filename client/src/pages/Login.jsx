@@ -32,7 +32,7 @@ const Login = () => {
                 notification.style.display = 'block';
                 setTimeout(() => {
                     window.location.href = '/my-account';
-                }, 2 * 1000);
+                }, 1.5 * 1000);
             })
             .catch(function (error) {
                 const notification = document.querySelector('.notification');

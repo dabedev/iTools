@@ -9,6 +9,7 @@ import NewPassword from '@pages/NewPassword';
 import MyAccount from '@pages/MyAccount';
 import CreateAccount from '@pages/CreateAccount';
 import PrivacyPolicy from '@pages/PrivacyPolicy';
+import Documentations from '@pages/Documentations';
 import TermsConditions from '@pages/TermsConditions';
 import NotFound from '@pages/NotFound';
 import AppContext from '@context/AppContext'
@@ -31,6 +32,7 @@ const App = () => {
                         <Route path="/sign-up" element={isAuthenticated ? <Navigate to='/my-account' /> : <CreateAccount />} />
                         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                         <Route path="/terms-conditions" element={<TermsConditions />} />
+                        <Route path="/docs" element={<Documentations />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Layout>
