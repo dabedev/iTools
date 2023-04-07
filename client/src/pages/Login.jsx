@@ -4,8 +4,6 @@ import axios from 'axios';
 
 import AppContext from '@context/AppContext';
 
-import apiKeys from '@config/apiKeys.json';
-
 import '@styles/Form.scss';
 
 const Login = () => {
@@ -31,7 +29,7 @@ const Login = () => {
                 notification.classList.add('notification--success');
                 notification.style.display = 'block';
                 setTimeout(() => {
-                    window.location.href = '/my-account';
+                    window.location.href = '/user';
                 }, 1.5 * 1000);
             })
             .catch(function (error) {
@@ -50,14 +48,14 @@ const Login = () => {
             <div className="form-container">
                 <form className="form" ref={form}>
                     <label htmlFor="email" className="label">Email</label>
-                    <input type="text" name="email" placeholder="mail@example.com" className="input input-email" />
+                    <input type="text" name="email" placeholder="mail@example.com" className="input input-email" autoComplete="on" />
                     <label htmlFor="password" className="label">Password</label>
-                    <input type="password" name="password" placeholder="*********" className="input input-password" />
+                    <input type="password" name="password" placeholder="*********" className="input input-password" autoComplete="on" />
                     <button className="primary-button" onClick={submitHandler}>Sign in</button>
                     <br />
                     <Link to="/password-recovery" className='forgot-password'>Forgot your password?</Link>
                     <br />
-                    <Link to="/sign-up" className='forgot-password'>You don't have an accout? Sign up!</Link>
+                    <Link to="/sign-up" className='forgot-password'>You don't have an account? Sign up!</Link>
                 </form>
             </div>
         </div>

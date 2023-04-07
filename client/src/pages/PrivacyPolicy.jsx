@@ -7,7 +7,7 @@ function PrivacyPolicy() {
         <div className="document">
             <h1>Information Collection</h1>
 
-            <p>We may collect personal information from you when you use our iTools API, such as your name, email address, and other contact information.
+            <p>We may collect personal information from you when you use our iTools API, such as your username, email address, and other contact information.
                 In addition, we may also collect usage data, such as how often you use our services and what features you use.
                 We use this information to provide you with technical support, to communicate with you about updates and new features, or to improve our services.</p>
 

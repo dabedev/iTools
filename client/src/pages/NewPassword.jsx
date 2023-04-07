@@ -3,30 +3,30 @@ import React from 'react';
 
 const NewPassword = () => {
     return (
-        <div class="login">
-            <div class="form-container">
-                <img src="" alt="logo" class="nav-logo" />
-                <h1 class="title">Crea una nueva contraseña</h1>
-                <p class="subtitle">Ingresa una nueva contraseña para tu cuenta</p>
-                <form action="/" class="form">
-                    <label htmlFor="password" class="label">Contraseña</label>
+        <div className="login">
+            <div className="form-container">
+                <img src="" alt="logo" className="nav-logo" />
+                <h1 className="title">Crea una nueva contraseña</h1>
+                <p className="subtitle">Ingresa una nueva contraseña para tu cuenta</p>
+                <form action="/" className="form">
+                    <label htmlFor="password" className="label">Contraseña</label>
                     <input
                         type="password"
                         id="password"
                         placeholder="*********"
-                        class="input input-password"
+                        className="input input-password"
                     />
-                    <label htmlFor="new-password" class="label">Repite la contraseña</label>
+                    <label htmlFor="new-password" className="label">Repite la contraseña</label>
                     <input
                         type="password"
                         id="new-password"
                         placeholder="*********"
-                        class="input input-password"
+                        className="input input-password"
                     />
                     <input
                         type="submit"
                         value="Confirmar"
-                        class="primary-button login-button"
+                        className="primary-button login-button"
                     />
                 </form>
             </div>

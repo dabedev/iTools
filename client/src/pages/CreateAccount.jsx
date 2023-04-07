@@ -12,7 +12,7 @@ const CreateAccount = () => {
 		const formData = new FormData(form.current);
 		const apiUrl = 'http://localhost:4000/auth/signup';
 		const data = {
-			username: formData.get('name'),
+			username: formData.get('username'),
 			email: formData.get('email'),
 			password: formData.get('password')
 		};
@@ -38,15 +38,15 @@ const CreateAccount = () => {
 			<div className='notification'></div>
 			<div className="form-container">
 				<form className="form" ref={form}>
-					<label htmlFor="name" className="label">Name</label>
-					<input type="text" name="name" placeholder="John Doe" className="input input-name" />
+					<label htmlFor="username" className="label">Username</label>
+					<input type="text" name="username" placeholder="John Doe" className="input input-username" />
 					<label htmlFor="email" className="label">Email</label>
 					<input type="text" name="email" placeholder="mail@example.com" className="input input-email" />
 					<label htmlFor="password" className="label">Password</label>
 					<input type="password" name="password" placeholder="*********" className="input input-password" />
 					<button className="primary-button" onClick={submitHandler}>Sign up</button>
 					<br />
-					<Link to="/sign-in" className='forgot-password'>Already have an accout? Sign in!</Link>
+					<Link to="/sign-in" className='forgot-password'>Already have an account? Sign in!</Link>
 				</form>
 			</div>
 		</div>

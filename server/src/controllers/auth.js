@@ -37,7 +37,8 @@ const signIn = (req, res) => {
                         var token = jwt.sign({ email: email, id: resultLogin[0].id }, SECRET, { expiresIn: '8h' });
                         var userData = {
                             id: resultLogin[0].id,
-                            email: resultLogin[0].email
+                            email: resultLogin[0].email,
+                            username: resultLogin[0].username
                         };
                         res.status(200).json({ message: 'Logged in successfully.', token: token, userData: userData });
                     } else {
@@ -67,9 +68,9 @@ const signUp = (req, res) => {
         res.status(400).json({ message: 'Incomplete fields.' });
         return;
     }
-    Database.query('SELECT * FROM accounts WHERE email = ?', [email]).then(result => {
+    Database.query('SELECT * FROM accounts WHERE email = ? OR username = ?', [email, username]).then(result => {
         if (result.length > 0) {
-            res.status(500).json({ message: 'Email already in use.' });
+            res.status(409).json({ message: 'Email or username already in use.' });
         } else {
             bcrypt.genSalt(SALT_ROUNDS, function (err, salt) {
                 if (err) {

@@ -11,7 +11,7 @@ module.exports = {
         publicPath: '/'
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.scss'],
+        extensions: ['.js', '.jsx'],
         alias: {
             '@routes': path.resolve(__dirname, 'src/routes/'),
             '@components': path.resolve(__dirname, 'src/components/'),

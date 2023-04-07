@@ -1,10 +1,10 @@
 @import 'vars';
 
-.MyAccount {
+.user {
     background-color: #f7f7f7;
     padding: 50px 0;
 
-    .MyAccount-container {
+    .user-container {
         max-width: 600px;
         margin: 0 auto;
         text-align: center;
@@ -35,7 +35,7 @@
                 border-radius: 50%;
             }
 
-            .user-avatar {
+            .my-avatar {
                 position: relative;
                 display: inline-block;
 

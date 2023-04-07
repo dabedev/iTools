@@ -38,7 +38,7 @@ function Header() {
 							<Link to="/dashboard">Dashboard</Link>
 						</li>
 						<li className="nav-item">
-							<Link to="/my-account">My account</Link>
+							<Link to="/user">My account</Link>
 						</li>
 						<li className="nav-item">
 							<button onClick={handleLogout} className='sign-button'>Logout</button>

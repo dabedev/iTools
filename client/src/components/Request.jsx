@@ -3,7 +3,7 @@ import axios from 'axios';
 import AppContext from '@context/AppContext';
 import Code from "@components/Code";
 
-import '@styles/Documentations.scss';
+import '@styles/Playground.scss';
 
 function RequestItem(props) {
     const [result, setResult] = useState(null);
@@ -73,7 +73,7 @@ response = requests.${props.values.reqMethod.toLowerCase()}('${props.values.reqU
     return (
         <div className="docs">
             <div className="card">
-                <h2 className="card-title">{props.values.name}</h2>
+                <h2 className="card-title">{props.values.username}</h2>
                 <pre className="card-result-data">{props.values.reqMethod} {props.values.reqUrl}</pre>
                 <p className="card-description">{props.values.desc}</p>
                 <div className="card-languages">

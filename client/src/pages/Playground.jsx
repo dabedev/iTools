@@ -1,7 +1,7 @@
 import React from 'react';
 import RequestsList from '@containers/RequestsList';
 
-function Documentations() {
+function Playground() {
     return (
         <div>
             <RequestsList />
@@ -9,4 +9,4 @@ function Documentations() {
     );
 }
 
-export default Documentations;
+export default Playground;
