@@ -15,7 +15,7 @@ const getMyUser = (req, res) => {
 };
 
 const getUser = (req, res) => {
-    const username = req.params.username;
+    const { username } = req.params;
     if (!username) return res.status(409).json({ message: 'Required parameter not found in URL.' })
     Database.query('SELECT id, username, created_at, updated_at, deleted_at, is_active, is_verified, is_banned FROM accounts WHERE username = ?', [username]).then(result => {
         if (result.length > 0) {

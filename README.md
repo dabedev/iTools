@@ -13,6 +13,7 @@ Our API provides a wide range of functionalities to help developers analyze and 
     - [Server's installation](#servers-installation)
     - [Server's usage](#servers-usage)
   - [Contributing](#contributing)
+  - [TODO](#todo)
 
 ## Client
 
@@ -99,3 +100,17 @@ If you would like to contribute to this project, please follow these steps:
 3. Submit a pull request
 
 Bug reports and feature requests can be submitted through the Issues tab.
+
+## TODO
+
+ * [ ] Implement an AccessToken system for each user
+ * [ ] Develop a Color Palette Picker for users to customize the interface
+ * [ ] Create Math modules for use in the application
+ * [ ] Implement Graphs to visually represent data
+ * [ ] Develop a Statistics module to provide data analysis
+ * [ ] Create an Image comparison tool
+ * [ ] Create a Single Sign-On (SSO) system for the application
+ * [ ] Publish an NPM module for use by other developers
+ * [ ] Ensure the application is responsive on all devices
+ * [ ] Build a Desktop Application using Electron
+ * [ ] Build a Mobile Application using React Native

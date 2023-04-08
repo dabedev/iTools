@@ -20,6 +20,9 @@ app.use('/auth', authRouter);
 var usersRouter = require('./routes/users');
 app.use('/users', usersRouter);
 
+var servicesRouter = require('./routes/services');
+app.use('/service', servicesRouter);
+
 
 app.listen(PORT, function () {
     console.log(`iTools API listening on port ${PORT}.`);

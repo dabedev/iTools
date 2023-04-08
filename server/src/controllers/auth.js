@@ -11,7 +11,7 @@ const signInCD = new Map();
  * @param {Object} res respuesta del servidor al cliente
  */
 const signIn = (req, res) => {
-    var [email, password] = [req.body.email, req.body.password];
+    var { email, password } = req.body;
     if (!email || !password) {
         res.status(400).json({ message: 'Incomplete fields.' });
         return;
@@ -63,7 +63,7 @@ const signIn = (req, res) => {
 * @param {Object} res respuesta del servidor al cliente
 */
 const signUp = (req, res) => {
-    var [email, username, password] = [req.body.email, req.body.username, req.body.password];
+    var { email, username, password } = req.body;
     if (!email || !username || !password) {
         res.status(400).json({ message: 'Incomplete fields.' });
         return;
@@ -105,14 +105,13 @@ const signUp = (req, res) => {
  * @param {Object} res respuesta del servidor al cliente
  */
 const resetPassword = (req, res) => {
-    const decoded = req.decoded;
-    const userEmail = decoded.email;
-    const password = req.body.password;
+    const { email } = req.decoded;
+    const { password } = req.body;
     if (!password) {
         res.status(400).json({ message: 'Password not specified.' });
         return;
     }
-    Database.query('SELECT * FROM accounts WHERE email = ?', [userEmail]).then(result => {
+    Database.query('SELECT * FROM accounts WHERE email = ?', [email]).then(result => {
         if (result.length > 0) {
             bcrypt.genSalt(SALT_ROUNDS, function (err, salt) {
                 if (err) {
@@ -124,7 +123,7 @@ const resetPassword = (req, res) => {
                         console.log(err);
                         res.status(500).json({ message: 'Error changing user password.' });
                     }
-                    Database.query('UPDATE accounts SET password = ? WHERE email = ?', [hash, userEmail]).then(() => {
+                    Database.query('UPDATE accounts SET password = ? WHERE email = ?', [hash, email]).then(() => {
                         res.status(200).json({ message: 'Password changed successfully.' });
                     }).catch(err => {
                         console.log(err);
