@@ -30,6 +30,9 @@ function Header() {
 				<li className="nav-item">
 					<Link to="/playground">Playground</Link>
 				</li>
+				<li className="nav-item">
+					<Link to="/webhooks/playground">Webhooks</Link>
+				</li>
 			</ul>
 			<ul className="nav-list">
 				{isAuthenticated ? (

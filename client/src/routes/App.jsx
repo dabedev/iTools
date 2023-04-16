@@ -10,6 +10,7 @@ import User from '@pages/User';
 import CreateAccount from '@pages/CreateAccount';
 import PrivacyPolicy from '@pages/PrivacyPolicy';
 import Playground from '@pages/Playground';
+import WebhooksPlayground from '@pages/WebhooksPlayground';
 import TermsConditions from '@pages/TermsConditions';
 import NotFound from '@pages/NotFound';
 import AppContext from '@context/AppContext'
@@ -33,6 +34,7 @@ const App = () => {
                         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                         <Route path="/terms-conditions" element={<TermsConditions />} />
                         <Route path="/playground" element={<Playground />} />
+                        <Route path="/webhooks/playground" element={<WebhooksPlayground />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </Layout>

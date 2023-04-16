@@ -1,7 +1,7 @@
 import React from 'react';
 import Request from '@components/Request';
 
-function Documentations() {
+function RequestsList() {
     return (
         <div>
             <Request values={{ username: 'Current User Data', desc: 'Retrieve information about the currently authenticated user.', reqUrl: 'http://localhost:4000/users/@me', reqMethod: 'GET', reqAuth: true }} />
@@ -9,4 +9,4 @@ function Documentations() {
     );
 }
 
-export default Documentations;
+export default RequestsList;
