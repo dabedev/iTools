@@ -1,28 +1,29 @@
 import React from "react";
 import VerticalBar from "../components/VerticalBar";
+import NotFound from "../pages/NotFound";
 import { useSearchParams, useParams } from 'react-router-dom';
 
 export default () => {
     const [queryParameters] = useSearchParams();
     const { ChartType } = useParams();
-    console.log(queryParameters)
-    console.log(queryParameters.get("a"))
-    const dataSet = [{
-        label: "datasetname1",
-        data: [1, 2, 3],
-        backgroundColor: "#de6b48"
-    },
-    {
-        label: "datasetname2",
-        data: [1, 2, 3],
-        backgroundColor: "#e5b181"
-    }]
-    const labels = queryParameters.get("labels")?.split(",") ?? [];
+    const labels = queryParameters.get("labels")?.split(";") ?? [];
     const title = queryParameters.get("title") ?? "";
+    const dataSetLabels = queryParameters.get("dataSetLabels")?.split(";") ?? [];
+    const dataSetValues = queryParameters.get("dataSetValues")?.split(";") ?? [];
+    const dataSetColors = queryParameters.get("dataSetColors")?.split(";") ?? [];
+
+    const dataSet = dataSetLabels.map((value, i) => {
+        var parsedData = dataSetValues[i].split(",").map(val => parseInt(val)) as GLfloat[];
+        var parsedColor = `#${dataSetColors[i]}` as string;
+        return {
+            label: value, data: parsedData, backgroundColor: parsedColor
+        }
+    })
+
     switch (ChartType) {
         case "vertical":
             return <VerticalBar title={title} labels={labels} dataSet={dataSet} />
         default:
-            return (<div><h1>404</h1></div>)
+            return (<NotFound />)
     }
 }

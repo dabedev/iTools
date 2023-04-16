@@ -32,14 +32,6 @@ interface BarProps {
 }
 
 export default ({ title, labels, dataSet }: BarProps) => {
-    var arr = [] as dataSetType[];
-    dataSet.map((a) => {
-        arr.push({
-            label: a.label,
-            data: a.data,
-            backgroundColor: a.backgroundColor,
-        })
-    })
     const options = {
         responsive: true,
         plugins: {
@@ -53,10 +45,10 @@ export default ({ title, labels, dataSet }: BarProps) => {
         },
     };
 
-
     const data = {
         labels,
-        datasets: arr,
+        datasets: dataSet,
     };
+
     return <Bar options={options} data={data} />;
 }
