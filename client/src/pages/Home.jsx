@@ -30,7 +30,6 @@ function Home() {
 					No customer support is provided, but our resources make integration quick and hassle-free.
 				</div>
 			</section>
-			<iframe src="http://localhost:5173/"></iframe>
 		</div>
 	);
 }
