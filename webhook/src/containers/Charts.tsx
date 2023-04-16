@@ -5,7 +5,7 @@ import { useSearchParams, useParams } from 'react-router-dom';
 
 export default () => {
     const [queryParameters] = useSearchParams();
-    const { ChartType } = useParams();
+    const { chartType } = useParams();
     const labels = queryParameters.get("labels")?.split(";") ?? [];
     const title = queryParameters.get("title") ?? "";
     const dataSetLabels = queryParameters.get("dataSetLabels")?.split(";") ?? [];
@@ -20,7 +20,7 @@ export default () => {
         }
     })
 
-    switch (ChartType) {
+    switch (chartType) {
         case "vertical":
             return <VerticalBar title={title} labels={labels} dataSet={dataSet} />
         default:

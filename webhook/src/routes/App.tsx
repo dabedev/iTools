@@ -9,7 +9,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path='/:ChartType' element={<Charts />} />
+        <Route path='/:chartType' element={<Charts />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>
