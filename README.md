@@ -104,7 +104,8 @@ Bug reports and feature requests can be submitted through the Issues tab.
 ## TODO
 
  * [ ] Update README with webhook instructions
- * [ ] Webhooks playground
+ * [ ] Export types for webhooks
+ * [ ] Webhooks playground has to generate the URL
  * [ ] Implement an AccessToken system for each user
  * [ ] Develop a Color Palette Picker for users to customize the interface
  * [ ] Create Math modules for use in the application
