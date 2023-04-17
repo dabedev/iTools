@@ -27,25 +27,36 @@ export default () => {
     const dataSetLabels = queryParameters.get("dataSetLabels")?.split(";") ?? [];
     const dataSetValues = queryParameters.get("dataSetValues")?.split(";") ?? [];
     const dataSetColors = queryParameters.get("dataSetColors")?.split(";") ?? [];
+    const dataSetStack = queryParameters.get("dataSetStack")?.split(";") ?? 0;
 
     const dataSet = dataSetLabels.map((value, i) => {
         var parsedData = dataSetValues[i].split(",").map(val => parseInt(val)) as GLfloat[];
         var parsedColor = `#${dataSetColors[i]}` as string;
+        var parsedStack = "" + dataSetStack;
         return {
-            label: value, data: parsedData, backgroundColor: parsedColor
+            label: value, data: parsedData, backgroundColor: parsedColor, stack: parsedStack
         }
     })
+
     const options = {
-        responsive: true,
         plugins: {
-            legend: {
-                position: 'top' as const,
-            },
             title: {
                 display: true,
                 text: title,
             },
         },
+        responsive: true,
+        interaction: {
+            intersect: false,
+        },
+        scales: {
+            x: {
+                stacked: true,
+            },
+            y: {
+                stacked: true
+            }
+        }
     };
 
     const data = {

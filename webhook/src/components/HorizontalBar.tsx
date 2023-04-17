@@ -35,11 +35,18 @@ export default () => {
             label: value, data: parsedData, backgroundColor: parsedColor
         }
     })
+
     const options = {
+        indexAxis: 'y' as const,
+        elements: {
+            bar: {
+                borderWidth: 2,
+            },
+        },
         responsive: true,
         plugins: {
             legend: {
-                position: 'top' as const,
+                position: 'right' as const,
             },
             title: {
                 display: true,

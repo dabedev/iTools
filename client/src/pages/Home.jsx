@@ -7,9 +7,9 @@ function Home() {
 		<div className="home">
 			<section className='about'>
 				<h1>What's iTools?</h1>
-				Our API provides a wide range of functionalities to help developers analyze and compare data. With our API, you can measure, analyze,
-				and compare different types of data, from numerical data to text. Additionally, we also offer the ability to set up webhooks to receive
-				real-time updates on statistical charts. With our API, you can easily integrate these functionalities into your applications to gain valuable insights about your data.
+				<p>Our API provides a wide range of functionalities to help developers analyze and compare data. With our API, you can measure, analyze,
+					and compare different types of data, from numerical data to text. Additionally, we also offer the ability to set up webhooks to receive
+					real-time updates on statistical charts. With our API, you can easily integrate these functionalities into your applications to gain valuable insights about your data.</p>
 			</section>
 			<section className='features'>
 				<div className='feature'>

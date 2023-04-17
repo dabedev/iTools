@@ -35,15 +35,25 @@ export default () => {
             label: value, data: parsedData, backgroundColor: parsedColor
         }
     })
+
     const options = {
-        responsive: true,
         plugins: {
-            legend: {
-                position: 'top' as const,
-            },
             title: {
                 display: true,
                 text: title,
+            },
+        },
+        responsive: true,
+        interaction: {
+            mode: 'index' as const,
+            intersect: false,
+        },
+        scales: {
+            x: {
+                stacked: true,
+            },
+            y: {
+                stacked: true,
             },
         },
     };
