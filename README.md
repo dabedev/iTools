@@ -61,15 +61,15 @@ To install the server, please follow these steps:
 
 - Navigate to the server directory
 
-  ```sh
-  cd iTools/server
-  ```
+```sh
+cd iTools/server
+```
 
 - Install the required dependencies using `npm`
 
-  ```sh
-  npm ci
-  ```
+```sh
+npm ci
+```
 
 ### Server's usage
 
@@ -85,9 +85,9 @@ This will start the server in development mode, allowing you to make changes to 
 
 - For production, run the following command in the `server` directory:
 
-  ```sh
-  npm start
-  ```
+```sh
+npm start
+```
 
   This will start the server in production mode, allowing you to serve the application using a web server of your choice.
 
@@ -103,17 +103,17 @@ Bug reports and feature requests can be submitted through the Issues tab.
 
 ## TODO
 
- * [ ] Update README with webhook instructions
- * [ ] Export types for webhooks
- * [ ] Webhooks playground has to generate the URL
- * [ ] Implement an AccessToken system for each user
- * [ ] Develop a Color Palette Picker for users to customize the interface
- * [ ] Create Math modules for use in the application
- * [ ] Implement Graphs to visually represent data
- * [ ] Develop a Statistics module to provide data analysis
- * [ ] Create an Image comparison tool
- * [ ] Create a Single Sign-On (SSO) system for the application
- * [ ] Publish an NPM module for use by other developers
- * [ ] Ensure the application is responsive on all devices
- * [ ] Build a Desktop Application using Electron
- * [ ] Build a Mobile Application using React Native
+- [ ] Update README with webhook instructions
+- [ ] Export types for webhooks
+- [ ] Webhooks playground has to generate the URL
+- [ ] Implement an AccessToken system for each user
+- [ ] Develop a Color Palette Picker for users
+- [ ] Develop Math modules
+- [X] Implement Graphs to visually represent data
+- [ ] Develop a Statistics module to provide data analysis
+- [ ] Create an Image comparison tool
+- [ ] Create a Single Sign-On (SSO) system for the application
+- [ ] Publish a NPM module for use by other developers
+- [ ] Ensure the application is responsive on all devices
+- [ ] Build a Desktop Application using Electron
+- [ ] Build a Mobile Application using React Native
