@@ -16,5 +16,9 @@
 
 body {
   margin: 0;
-  display: flex;
+}
+
+canvas {
+  width: 50vh;
+  height: 50vh;
 }
