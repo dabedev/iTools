@@ -12,6 +12,7 @@ Our API provides a wide range of functionalities to help developers analyze and 
   - [Server](#server)
     - [Server's installation](#servers-installation)
     - [Server's usage](#servers-usage)
+  - [Webhook](#webhook)
     - [Webhook's installation](#webhooks-installation)
     - [Webhook's usage](#webhooks-usage)
   - [Contributing](#contributing)
@@ -92,6 +93,8 @@ npm start
 ```
 
 This will start the server in production mode, allowing you to serve the application using a web server of your choice.
+
+## Webhook
 
 ### Webhook's installation
 
