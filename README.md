@@ -12,6 +12,8 @@ Our API provides a wide range of functionalities to help developers analyze and 
   - [Server](#server)
     - [Server's installation](#servers-installation)
     - [Server's usage](#servers-usage)
+    - [Webhook's installation](#webhooks-installation)
+    - [Webhook's usage](#webhooks-usage)
   - [Contributing](#contributing)
   - [TODO](#todo)
 
@@ -89,7 +91,43 @@ This will start the server in development mode, allowing you to make changes to 
 npm start
 ```
 
-  This will start the server in production mode, allowing you to serve the application using a web server of your choice.
+This will start the server in production mode, allowing you to serve the application using a web server of your choice.
+
+### Webhook's installation
+
+To install the webhook client, please follow these steps:
+
+- Navigate to the webhook directory
+
+```sh
+cd iTools/webhook
+```
+
+- Install the required dependencies using `npm`
+
+```sh
+npm ci
+```
+
+### Webhook's usage
+
+To use the webhook client, follow these steps:
+
+- For development, run the following command in the `webhook` directory:
+
+```sh
+npm run dev
+```
+
+This will start the webhook client in development mode, allowing you to make changes to the code and see the results in real time.
+
+- For production, run the following command in the `webhook` directory:
+
+```sh
+npm run build
+```
+
+This will create a production build of the client application in the `build` directory of the `webhook` folder. You can then serve this directory using a web server of your choice.
 
 ## Contributing
 
@@ -103,7 +141,6 @@ Bug reports and feature requests can be submitted through the Issues tab.
 
 ## TODO
 
-- [ ] Update README with webhook instructions
 - [ ] Export types for webhooks
 - [ ] Webhooks playground has to generate the URL
 - [ ] Implement an AccessToken system for each user
