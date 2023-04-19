@@ -32,7 +32,7 @@ export default () => {
     const dataSet = dataSetLabels.map((value, i) => {
         var parsedData = dataSetValues[i].split(",").map(val => parseInt(val)) as GLfloat[];
         var parsedColor = `#${dataSetColors[i]}` as string;
-        var parsedStack = "" + dataSetStack;
+        var parsedStack = "Stack " + dataSetStack;
         return {
             label: value, data: parsedData, backgroundColor: parsedColor, stack: parsedStack
         }
