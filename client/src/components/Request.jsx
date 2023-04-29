@@ -73,7 +73,7 @@ response = requests.${props.values.reqMethod.toLowerCase()}('${props.values.reqU
     return (
         <div className="docs">
             <div className="card">
-                <h2 className="card-title">{props.values.username}</h2>
+                <h2 className="card-title">{props.values.name}</h2>
                 <Code code={`${props.values.reqMethod} ${props.values.reqUrl}`} language='nginx' />
                 <p className="card-description">{props.values.desc}</p>
                 <div className="card-languages">
